@@ -1,9 +1,9 @@
-name: Android Pull Request & Master CI
+name: Travelog CI
 
 on:
   push:
     branches:
-      - 'main'
+      - 'develop'
   pull_request:
     branches:
       - '**'
@@ -23,6 +23,7 @@ jobs:
         run: chmod +x ./gradlew
       - name: Unit tests
         run: ./gradlew test --stacktrace
+<<<<<<< HEAD
 
   build:
     runs-on: ubuntu-latest
@@ -37,3 +38,20 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
+=======
+ 
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Grant execute permission for gradlew
+      run: chmod +x ./gradlew
+    - name: Build with Gradle
+      run: ./gradlew build
+>>>>>>> 06130c3 ([Chore] CI Action 추가)
